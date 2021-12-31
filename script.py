@@ -16,13 +16,16 @@ if options == 'e':
 		finalpositions = []
 		item = i + 3
 		finalpositions.append(item)
-    for i in message:
-    	encrypted = ''
-    	if i == ' ':
-    		encrypted += '0'
-    	else:
-    		
-elif options == 'd':
-
+	for i in message:
+		encrypted = ''
+		if i == ' ':
+			encrypted += '0'
+		else:
+			for j in finalpositions:
+				indexofitem = alphanumeric.index(i)
+				fixedindex = indexofitem + j 
+				encrypted += alphanumeric[fixedindex]
+	print(encrypted)
+#elif options == 'd':
 else:
 	print("That's A Wrong Choice")
