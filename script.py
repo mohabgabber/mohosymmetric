@@ -2,12 +2,26 @@ print("Hi, The Purpose Of This Software Is To Do A Basic Encoding Algorith, Made
 options = str(input("Do You Want To Encrypt or Decrypt? (E/D): ").lower())
 message = str(input("Please Enter Your Message: ").lower())
 password = str(input("Enter Your Password: ").lower())
+def remove(passwords):
+    return passwords.replace(" ", "")
 alphanumeric = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
 if options == 'e':
-	for i in password:
+	for i in remove(password):
 		positions = []
 		positions.append(i)
-		
+	for i in positions:
+		actualpositions = []
+		actualpositions.append(alphanumeric.index(i))
+	for i in actualpositions:
+		finalpositions = []
+		item = i + 3
+		finalpositions.append(item)
+    for i in message:
+    	encrypted = ''
+    	if i == ' ':
+    		encrypted += '0'
+    	else:
+    		
 elif options == 'd':
 
 else:
