@@ -8,6 +8,7 @@ password = str(input("Enter Your Password: ").lower())
 keychars = []
 positions = []
 finalpositions = []
+key = 0
 for i in remove(password):
 	keychars.append(i)
 for s in keychars:
@@ -15,18 +16,26 @@ for s in keychars:
 for e in positions:
 	item = e + 3
 	finalpositions.append(item)
+for p in finalpositions:
+	key += p
 if options == 'e':
+	encrypted = ''
 	for i in message:
-		encrypted = ''
+		
 		if i == ' ':
 			encrypted += ' '
 		else:
-			count = 0
-			for j in finalpositions:
-				indexofitem = alphanumeric.index(i)
-				fixedindex = indexofitem + j 
-				encrypted += alphanumeric[fixedindex % 36]
+			indexed = (alphanumeric.index(i) + key) % len(alphanumeric)
+			encrypted += alphanumeric[indexed]
 	print(encrypted)
-#elif options == 'd':
+elif options == 'd':
+	decrypted = ''
+	for i in message:
+		if i == ' ':
+			decrypted += ' '
+		else:
+			indexed = (alphanumeric.index(i) - key) % len(alphanumeric)
+			decrypted += alphanumeric[indexed]
+	print(decrypted)
 else:
 	print("That's A Wrong Choice")
