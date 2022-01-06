@@ -1,3 +1,4 @@
+import hashlib
 print("Hi, The Purpose Of This Software Is To Do A Basic Encoding Algorith, Made By Mohab Gabber\n ")
 print('''
 mohosymmetric  Copyright (C) 2022  Mohab Gabber
@@ -8,13 +9,14 @@ under certain conditions.
 alphanumeric = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', ' ', '?', '!', '#', '@', '%', '$', '^', '&', '*', '(', ')', '[', ']', '{', '}', '+', '=', '-', '_', '~', '\\', '/', "'", '"', ';', ':', '<', '>', '.', ',']
 options = str(input("Do You Want To Encrypt or Decrypt? (E/D): ").lower())
 message = str(input("Please Enter Your Message: "))
-password = str(input("Enter Your Password: "))
+plaintext_password = str(input("Enter Your Password: "))
+hashed = str(hashlib.sha256(plaintext_password.encode('utf-8')).hexdigest())
 shifts = int(input("How Many Shifts Do You Want: "))
 keychars = []
 positions = []
 finalpositions = []
 key = 0
-for i in password:
+for i in hashed:
 	keychars.append(i)
 for s in keychars:
 	positions.append(alphanumeric.index(s))
