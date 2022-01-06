@@ -5,18 +5,16 @@ This program comes with ABSOLUTELY NO WARRANTY.
 This is free software, and you are welcome to redistribute it
 under certain conditions.
 	\n''')
-def remove(passwords):
-    return passwords.replace(" ", "")
-alphanumeric = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', ' ', '?', '!', '#', '@', '%', '$', '^', '&', '*', '(', ')', '[', ']', '{', '}', '+', '=', '-', '_', '~', '\\', '/', "'", '"', ';', ':', '<', '>', '.', ',']
+alphanumeric = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', ' ', '?', '!', '#', '@', '%', '$', '^', '&', '*', '(', ')', '[', ']', '{', '}', '+', '=', '-', '_', '~', '\\', '/', "'", '"', ';', ':', '<', '>', '.', ',']
 options = str(input("Do You Want To Encrypt or Decrypt? (E/D): ").lower())
-message = str(input("Please Enter Your Message: ").lower())
-password = str(input("Enter Your Password: ").lower())
-shifts = int(input("How Many Shifts Do You Want: ").lower())
+message = str(input("Please Enter Your Message: "))
+password = str(input("Enter Your Password: "))
+shifts = int(input("How Many Shifts Do You Want: "))
 keychars = []
 positions = []
 finalpositions = []
 key = 0
-for i in remove(password):
+for i in password:
 	keychars.append(i)
 for s in keychars:
 	positions.append(alphanumeric.index(s))
