@@ -30,7 +30,6 @@ if option1 == 'c':
 	message = input("Please Enter Your Message: ")
 	plaintext_password = input("Enter Your Password: ")
 	hashed = str(hashlib.sha256(plaintext_password.encode('utf-8')).hexdigest())
-	shifts = int(input("How Many Shifts Do You Want: "))
 	keychars = []
 	positions = []
 	finalpositions = []
@@ -39,11 +38,6 @@ if option1 == 'c':
 		keychars.append(i)
 	for s in keychars:
 		positions.append(alphanumeric.index(s))
-	for e in positions:
-		item = e + shifts
-		finalpositions.append(item)
-	for p in finalpositions:
-		key += p
 	if option_caesar2 == 'e':
 		encrypted = ''
 		for i in message:
