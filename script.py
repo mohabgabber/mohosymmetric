@@ -24,34 +24,52 @@ This is free software, and you are welcome to redistribute it
 under certain conditions.
 	\n''')
 option1 = input("Do You Want To Use Caesar Or Vigenere Cipher? (C/V): ").lower()
+option2 = input("Do You Want To Encrypt or Decrypt? (E/D): ").lower()
+alphanumeric = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', ' ', '?', '!', '#', '@', '%', '$', '^', '&', '*', '(', ')', '[', ']', '{', '}', '+', '=', '-', '_', '~', '\\', '/', "'", '"', ';', ':', '<', '>', '.', ',']
+message = input("Please Enter Your Message: ")
+plaintext_password = input("Enter Your Password: ")
+key = str(hashlib.sha256(plaintext_password.encode('utf-8')).hexdigest())
+encrypted = ''
+decrypted = ''
+key_index = 0
 if option1 == 'c':
-	alphanumeric = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', ' ', '?', '!', '#', '@', '%', '$', '^', '&', '*', '(', ')', '[', ']', '{', '}', '+', '=', '-', '_', '~', '\\', '/', "'", '"', ';', ':', '<', '>', '.', ',']
-	option_caesar2 = input("Do You Want To Encrypt or Decrypt? (E/D): ").lower()
-	message = input("Please Enter Your Message: ")
-	plaintext_password = input("Enter Your Password: ")
-	hashed = str(hashlib.sha256(plaintext_password.encode('utf-8')).hexdigest())
 	keychars = []
 	positions = []
 	finalpositions = []
-	key = 0
-	for i in hashed:
+	keys = 0
+	for i in key:
 		keychars.append(i)
 	for s in keychars:
 		positions.append(alphanumeric.index(s))
-	if option_caesar2 == 'e':
+	if option2 == 'e':
 		encrypted = ''
 		for i in message:
-			indexed = (alphanumeric.index(i) + key + 2) % len(alphanumeric)
+			indexed = (alphanumeric.index(i) + keys + 2) % len(alphanumeric)
 			encrypted += alphanumeric[indexed]
 		print(encrypted)
-	elif option_caesar2 == 'd':
+	elif option2 == 'd':
 		decrypted = ''
 		for i in message:
-			indexed = (alphanumeric.index(i) - key - 2) % len(alphanumeric)
+			indexed = (alphanumeric.index(i) - keys - 2) % len(alphanumeric)
 			decrypted += alphanumeric[indexed]
 		print(decrypted)
 	else:
 		print("That's A Wrong Choice")
 elif option1 == 'v':
-	pass
+	if option2 == 'e':
+		for char in message:
+			index = (alphanumeric.index(char) + (alphanumeric.index(key[key_index]))) % len(alphanumeric)
+			encrypted += alphanumeric[index]
+			key_index += 1
+			if key_index == len(key):
+				key_index = 0
+		print(encrypted)
+	elif option2 == 'd':
+		for char in message:
+			index = (alphanumeric.index(char) - (alphanumeric.index(key[key_index]))) % len(alphanumeric)
+			decrypted += alphanumeric[index]
+			key_index += 1
+			if key_index == len(key):
+				key_index = 0
+		print(decrypted)
 	
