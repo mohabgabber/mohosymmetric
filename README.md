@@ -1,5 +1,10 @@
 # mohosymmetric
-A Simple Encoding Algorithm, Made For Educational Purposes
+A Script That Encrypts Text Messages Using Different Algorithms, And Included Another Script That Breaks Every One Of Them
+
+## Available Algorithms
+- Caesar Cipher
+- Vigenere Cipher
+- Vernam Cipher (Coming Soon)
 # LICENSE
     mohosymmetric a basic encryption software for testing purposes
     Copyright (C) 2022  Mohab Gabber
