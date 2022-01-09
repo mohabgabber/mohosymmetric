@@ -16,6 +16,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 '''
 import hashlib
+import string
 print("Hi, The Purpose Of This Software Is To Do A Basic Encoding Algorith, Made By Mohab Gabber\n ")
 print('''
 mohosymmetric  Copyright (C) 2022  Mohab Gabber
@@ -25,7 +26,7 @@ under certain conditions.
 	\n''')
 option1 = input("Do You Want To Use Caesar Or Vigenere Cipher? (C/V): ").lower()
 option2 = input("Do You Want To Encrypt or Decrypt? (E/D): ").lower()
-alphanumeric = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', ' ', '?', '!', '#', '@', '%', '$', '^', '&', '*', '(', ')', '[', ']', '{', '}', '+', '=', '-', '_', '~', '\\', '/', "'", '"', ';', ':', '<', '>', '.', ',']
+ascii_chars = string.printable
 message = input("Please Enter Your Message: ")
 plaintext_password = input("Enter Your Password: ")
 key = str(hashlib.sha256(plaintext_password.encode('utf-8')).hexdigest())
@@ -40,34 +41,34 @@ if option1 == 'c':
 	for i in key:
 		keychars.append(i)
 	for s in keychars:
-		positions.append(alphanumeric.index(s))
+		positions.append(ascii_chars.index(s))
 	if option2 == 'e':
 		encrypted = ''
 		for i in message:
-			indexed = (alphanumeric.index(i) + keys + 2) % len(alphanumeric)
-			encrypted += alphanumeric[indexed]
+			indexed = (ascii_chars.index(i) + keys + 2) % len(ascii_chars)
+			encrypted += ascii_chars[indexed]
 		print(encrypted)
 	elif option2 == 'd':
 		decrypted = ''
 		for i in message:
-			indexed = (alphanumeric.index(i) - keys - 2) % len(alphanumeric)
-			decrypted += alphanumeric[indexed]
+			indexed = (ascii_chars.index(i) - keys - 2) % len(ascii_chars)
+			decrypted += ascii_chars[indexed]
 		print(decrypted)
 	else:
 		print("That's A Wrong Choice")
 elif option1 == 'v':
 	if option2 == 'e':
 		for char in message:
-			index = (alphanumeric.index(char) + (alphanumeric.index(key[key_index]))) % len(alphanumeric)
-			encrypted += alphanumeric[index]
+			index = (ascii_chars.index(char) + (ascii_chars.index(key[key_index]))) % len(ascii_chars)
+			encrypted += ascii_chars[index]
 			key_index += 1
 			if key_index == len(key):
 				key_index = 0
 		print(encrypted)
 	elif option2 == 'd':
 		for char in message:
-			index = (alphanumeric.index(char) - (alphanumeric.index(key[key_index]))) % len(alphanumeric)
-			decrypted += alphanumeric[index]
+			index = (ascii_chars.index(char) - (ascii_chars.index(key[key_index]))) % len(ascii_chars)
+			decrypted += ascii_chars[index]
 			key_index += 1
 			if key_index == len(key):
 				key_index = 0
