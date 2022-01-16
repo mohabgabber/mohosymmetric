@@ -1,5 +1,5 @@
 # mohosymmetric
-A Script That Encrypts Text Messages Using Different Algorithms, And Included Another Script That Breaks Every One Of Them
+A Script That Encrypts Text Messages Using Different Algorithms.
 
 ## Available Algorithms
 - Caesar Cipher
