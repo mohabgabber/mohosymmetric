@@ -42,6 +42,8 @@ if option1 == 'c':
 		keychars.append(i)
 	for s in keychars:
 		positions.append(ascii_chars.index(s))
+	for e in positions:
+		keys += e
 	if option2 == 'e':
 		encrypted = ''
 		for i in message:

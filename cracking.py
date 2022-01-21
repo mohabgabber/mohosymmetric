@@ -15,6 +15,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 '''
+import string
 print("Hi, The Purpose Of This Software Is To Do A Basic Cracking Algorith, Made By Mohab Gabber\n ")
 print('''
 mohosymmetric  Copyright (C) 2022  Mohab Gabber
@@ -22,7 +23,7 @@ This program comes with ABSOLUTELY NO WARRANTY.
 This is free software, and you are welcome to redistribute it
 under certain conditions.
 	\n''')
-alphanumeric = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', ' ', '?', '!', '#', '@', '%', '$', '^', '&', '*', '(', ')', '[', ']', '{', '}', '+', '=', '-', '_', '~', '\\', '/', "'", '"', ';', ':', '<', '>', '.', ',']
+alphanumeric = string.printable
 message = input("Please Enter The Message To Be Cracked: ")
 for key in range(len(alphanumeric)):
 	plaintext = ''
